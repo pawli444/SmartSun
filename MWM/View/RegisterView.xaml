@@ -1,0 +1,164 @@
+﻿<Window x:Class="Projekt_IO.MWM.View.RegisterView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        mc:Ignorable="d" 
+        xmlns:local="clr-namespace:Projekt_IO"
+        xmlns:viewModel="clr-namespace:Projekt_IO.MWM.ViewModel"
+        Title="RegisterView" 
+        Height="600" Width="920"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <FontFamily x:Key="CustomFont">Plus Jakarta Sans</FontFamily>
+
+        <Style x:Key="RoundedTextBox" TargetType="TextBox">
+            <Setter Property="Background" Value="#FFF5F1EE"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="Padding" Value="15,0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="8"
+                                BorderThickness="0">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="RoundedPasswordBox" TargetType="PasswordBox">
+            <Setter Property="Background" Value="#FFF5F1EE"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="Padding" Value="15,0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="8"
+                                BorderThickness="0">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="RegisterButton" TargetType="Button">
+            <Setter Property="Background" Value="#D3D3D3"/>
+            <Setter Property="Foreground" Value="#1C160C"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#D3D3D3"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="20">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#ab9896"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Border Background="White"
+            CornerRadius="20"
+            MouseDown="Border_MouseDown">
+        <Grid Margin="30">
+            <StackPanel>
+                <!-- Header -->
+                <TextBlock Text="SmartSun"
+                         FontSize="20"
+                         FontFamily="{StaticResource CustomFont}"
+                         HorizontalAlignment="Center"
+                         Margin="0,30,0,50"/>
+
+                <TextBlock Text="Witaj!"
+                         FontFamily="{StaticResource CustomFont}"
+                         FontSize="28"
+                         FontWeight="Bold"
+                         HorizontalAlignment="Center"
+                         Margin="0,0,0,20"/>
+
+                <!-- Registration Form -->
+                <TextBlock Text="E-mail"
+                         FontFamily="{StaticResource CustomFont}"
+                         Margin="0,0,0,5"
+                         FontSize="14"/>
+                <TextBox x:Name="EmailBox"
+                         Style="{StaticResource RoundedTextBox}"
+                         FontFamily="{StaticResource CustomFont}"
+                         FontSize="16"
+                         Margin="0,0,0,15"/>
+
+                <TextBlock Text="Hasło"
+                         FontFamily="{StaticResource CustomFont}"
+                         Margin="0,0,0,5"
+                         FontSize="14"/>
+                <PasswordBox x:Name="PasswordBox"
+                            Style="{StaticResource RoundedPasswordBox}"
+                            FontFamily="{StaticResource CustomFont}"
+                            Margin="0,0,0,15"
+                            FontSize="16"/>
+
+                <TextBlock Text="Potwierdź hasło"
+                         FontFamily="{StaticResource CustomFont}"
+                         Margin="0,0,0,5"
+                         FontSize="14"/>
+                <PasswordBox x:Name="ConfirmPasswordBox"
+                            Style="{StaticResource RoundedPasswordBox}"
+                            FontFamily="{StaticResource CustomFont}"
+                            Margin="0,0,0,55"
+                            FontSize="16"/>
+
+                <Button Content="Zarejestruj się"
+                        Style="{StaticResource RegisterButton}"
+                        FontFamily="{StaticResource CustomFont}"
+                        Click="OnRegisterClick"
+                        Margin="0,0,0,25"
+                        FontSize="15"
+                        BorderBrush="#D3D3D3"
+                        Width="200"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock FontFamily="{StaticResource CustomFont}" FontSize="14" VerticalAlignment="Center">
+                        <Run Text="Masz już konto? "/>
+                    </TextBlock>
+                    <Button Content="Zaloguj się"
+                            Style="{StaticResource RegisterButton}"
+                            FontFamily="{StaticResource CustomFont}"
+                            Click="OnLoginClick"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            Foreground="#ab9896"
+                            Cursor="Hand"
+                            FontSize="14"
+                            VerticalAlignment="Center"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

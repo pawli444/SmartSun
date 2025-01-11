@@ -1,0 +1,93 @@
+﻿<Window x:Class="Projekt_IO.MWM.View.Pairing"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Projekt_IO.MWM.View"
+      mc:Ignorable="d" 
+      Width="350"
+      Height="400"
+      WindowStyle="None"
+      Background="White"
+      Title="Pairing">
+    <Window.Resources>
+        <FontFamily x:Key="CustomFont">Plus Jakarta Sans</FontFamily>
+    </Window.Resources>
+    
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header with close button -->
+        <Grid Grid.Row="0">
+            <Button Content="×" 
+                    HorizontalAlignment="Left"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    FontSize="24"
+                    Margin="0,0,0,20"
+                    Click="CloseButton_Click"/>
+            <TextBlock Text="Dodaj urządzenie"
+                     FontFamily="{StaticResource CustomFont}"
+                     Foreground="#1C1C1C"
+                     FontSize="20"
+                     HorizontalAlignment="Center"
+                     Margin="0,0,0,20"/>
+        </Grid>
+
+        <!-- Instructions header -->
+        <TextBlock Grid.Row="1" 
+                   Text="Instrukcje"
+                   FontFamily="{StaticResource CustomFont}"
+                   Foreground="#1C1C1C"
+                   FontWeight="DemiBold"
+                   FontSize="16"
+                   Margin="0,0,0,20"/>
+
+        <!-- Instructions list -->
+        <StackPanel Grid.Row="2" Margin="0,0,0,20">
+            <TextBlock Text="1. Włączaj i wyłączaj żarówkę"
+                       TextWrapping="Wrap"
+                       FontFamily="{StaticResource CustomFont}"
+                       Foreground="#1C1C1C"
+                       Margin="0,0,0,10"/>
+            <TextBlock Text="2. Powtarzaj czynność do momentu, aż światło zacznie pulsować"
+                       Foreground="#1C1C1C"
+                       FontFamily="{StaticResource CustomFont}"
+                       TextWrapping="Wrap"
+                       Margin="0,0,0,10"/>
+            <TextBlock Text="3. Poczekaj aż parowanie się zakończy"
+                       Foreground="#1C1C1C"
+                       FontFamily="{StaticResource CustomFont}"
+                       TextWrapping="Wrap"
+                       Margin="0,0,0,10"/>
+
+            <TextBlock Text="Parowanie..."
+                       Foreground="#8B6F6F"
+                       FontFamily="{StaticResource CustomFont}"
+                       HorizontalAlignment="Center"
+                       Margin="0,40,0,0"/>
+        </StackPanel>
+
+        <!-- Add button -->
+        <Button Grid.Row="3"
+                Content="Dodaj"
+                FontFamily="{StaticResource CustomFont}"
+                Height="45"
+                Background="#B4A1A1"
+                Foreground="White"
+                BorderThickness="0"
+                FontSize="16">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
+</Window>

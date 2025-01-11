@@ -1,0 +1,141 @@
+﻿<Window x:Class="Projekt_IO.MainWindow" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekt_IO"
+        xmlns:viewModel="clr-namespace:Projekt_IO.MWM.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        Height="600" Width="920"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <FontFamily x:Key="CustomFont">Plus Jakarta Sans Regular</FontFamily>
+
+        <!-- Style do przycisków -->
+        <Style x:Key="MenuButtonStyle" TargetType="RadioButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border x:Name="Border"
+                                CornerRadius="15"
+                                Padding="10,5"
+                                Background="Transparent"
+                                SnapsToDevicePixels="True">
+                            <Grid>
+                                <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#90a4ae" />
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="Border" Property="Background" Value="Transparent"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="#1C160C"/>
+            <Setter Property="FontFamily" Value="{StaticResource CustomFont}"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </Window.Resources>
+
+    <Border Background="{DynamicResource AppBackgroundBrush}"
+            CornerRadius="20"
+            MouseDown="Border_MouseDown">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="2"/>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Nagłówek -->
+            <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <RadioButton Content="SmartSun"
+                             Foreground="{DynamicResource AppForegroundBrush}"
+                             FontFamily="{StaticResource CustomFont}"
+                             FontSize="30"
+                             IsChecked="True"
+                             Style="{StaticResource SmartSunButtonTheme}"
+                             Command="{Binding SmartSunViewCommand}"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             Click="sound"/>
+            </StackPanel>
+
+            <!-- Separator -->
+            <Border Grid.Row="1" Grid.ColumnSpan="2" Background="{DynamicResource Separator}" Height="1"/>
+
+            <!-- Menu -->
+            <StackPanel Grid.Row="2" VerticalAlignment="Top" Margin="15,10">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,10">
+                    <Image Source="{DynamicResource Image1}" Width="20" Height="20" Margin="10,0"/>
+                    <RadioButton Content="Ogród"
+                                 Command="{Binding OgrodViewCommand}"
+                                 Style="{StaticResource MenuButtonStyle}"
+                                 Foreground="{DynamicResource AppForegroundBrush}"
+                                 IsChecked="True"
+                                 VerticalAlignment="Center" Width="86" 
+                                 Click="sound"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,10">
+                    <Image Source="{DynamicResource Image2}" Width="20" Height="20" Margin="10,0"/>
+                    <RadioButton Content="Pogoda"
+                                 Command="{Binding PogodaViewCommand}"
+                                 Foreground="{DynamicResource AppForegroundBrush}"
+                                 IsChecked="True"
+                                 Style="{StaticResource MenuButtonStyle}"
+                                 VerticalAlignment="Center" Width="96" 
+                                 Click="sound"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,10">
+                    <Image Source="{DynamicResource Image3}" Width="20" Height="20" Margin="10,0"/>
+                    <RadioButton Content="Ustawienia"
+                                 Foreground="{DynamicResource AppForegroundBrush}"
+                                 IsChecked="True"
+                                 Command="{Binding UstawieniaViewCommand}"
+                                 Style="{StaticResource MenuButtonStyle}"
+                                 VerticalAlignment="Center" Width="109"
+                                 Click="sound"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Widok dynamiczny -->
+            <ContentControl Grid.Row="2"
+                            Grid.Column="1"
+                            Margin="10"
+                            Content="{Binding CurrentView}" />
+
+            <!-- Stopka -->
+            <TextBlock Grid.Row="3"
+                       Text="© 2025 Smart Sun" 
+                       Grid.ColumnSpan="2"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="12"
+                       Foreground="{DynamicResource AppForegroundBrush}"
+                       FontFamily="{StaticResource CustomFont}"
+                       Margin="10"/>
+        </Grid>
+    </Border>
+</Window>

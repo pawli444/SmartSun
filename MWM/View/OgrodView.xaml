@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="Projekt_IO.MWM.View.OgrodView" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="600">
+
+    <UserControl.Resources>
+        <FontFamily x:Key="CustomFont">Plus Jakarta Sans Regular</FontFamily>
+    </UserControl.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="20">
+
+            <!-- Sekcja Kwiaty -->
+            <TextBlock Text="Dodawanie Roślin" FontSize="24" FontWeight="Bold" FontFamily="{StaticResource CustomFont}" Foreground="{DynamicResource AppForegroundBrush}" Margin="8,0,0,10"/>
+            <TextBlock Text="Wybierz rośliny do dodania" FontSize="16" FontFamily="{StaticResource CustomFont}" Foreground="#333" Margin="8,0,0,20"/>
+
+            <UniformGrid x:Name="PlantPanel" Columns="3" Rows="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,30">
+                <!-- Kwadrat z przyciskiem "+" -->
+                <Border BorderThickness="2" CornerRadius="10" BorderBrush="#e9edf0" Width="120" Height="120" Margin="10">
+                    <Button Content="+" FontSize="24" FontWeight="Bold" FontFamily="{StaticResource CustomFont}" Foreground="#333" Background="Transparent" BorderBrush="Transparent" Click="AddPlantButton_Click"/>
+                </Border>
+
+                <!-- Puste miejsca na rośliny -->
+                <Border BorderThickness="2" BorderBrush="#e9edf0" CornerRadius="10" Width="120" Height="120" Margin="10"/>
+                <Border BorderThickness="2" BorderBrush="#e9edf0" CornerRadius="10" Width="120" Height="120" Margin="10"/>
+                <Border BorderThickness="2" BorderBrush="#e9edf0" CornerRadius="10" Width="120" Height="120" Margin="10"/>
+                <Border BorderThickness="2" BorderBrush="#e9edf0" CornerRadius="10" Width="120" Height="120" Margin="10"/>
+                <Border BorderThickness="2" BorderBrush="#e9edf0" CornerRadius="10" Width="120" Height="120" Margin="10"/>
+            </UniformGrid>
+
+            <!-- Sekcja Żarówki -->
+            <TextBlock Text="Dodawanie Żarówek" FontSize="24" FontWeight="Bold" FontFamily="{StaticResource CustomFont}" Foreground="{DynamicResource AppForegroundBrush}" Margin="8,-10,0,10"/>
+            <TextBlock Text="Wybierz żarówki do dodania" FontSize="16" FontFamily="{StaticResource CustomFont}" Foreground="#333" Margin="8,0,0,10"/>
+
+            <UniformGrid Columns="3" Rows="1" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <!-- Kwadrat z przyciskiem "+" -->
+                <Border BorderThickness="2" CornerRadius="10" BorderBrush="#e9edf0" Width="150" Height="150" Margin="10">
+                    <Button Content="+" FontSize="36" FontWeight="Bold" FontFamily="{StaticResource CustomFont}" Foreground="#333" Background="Transparent" BorderBrush="Transparent"  Click="OpenPairingWindow_Click"/>
+                </Border>
+
+                <!-- Pozostałe kwadraty -->
+                <Border BorderThickness="2" CornerRadius="10" BorderBrush="#e9edf0" Width="150" Height="150" Margin="10"/>
+                <Border BorderThickness="2" CornerRadius="10" BorderBrush="#e9edf0" Width="150" Height="150" Margin="10"/>
+            </UniformGrid>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
